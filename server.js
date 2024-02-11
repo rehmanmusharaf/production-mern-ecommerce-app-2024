@@ -6,7 +6,7 @@ const app = express();
 var cors = require("cors");
 const productroute = require("./routes/Productroutes");
 const path = require("path");
-const {fileURLtoPath}=require('url');
+const { fileURLtoPath } = require('url');
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
