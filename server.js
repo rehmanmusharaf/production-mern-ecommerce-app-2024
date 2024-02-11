@@ -6,12 +6,15 @@ const app = express();
 var cors = require("cors");
 const productroute = require("./routes/Productroutes");
 const path = require("path");
+const {fileURLtoPath}=require('url');
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 require("dotenv").config();
 app.use(express.static(path.join(__dirname, "./client/build")));
 mongoconnect();
+const __filename=fileURLtoPath(import.meta.url);
+const __dirname=path.dirname(__filename);
 const PORT = process.env.PORT || 8080;
 app.use("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
